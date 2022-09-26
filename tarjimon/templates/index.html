@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Semantic/semantic.min.css' %}">
+    <title>13-dars</title>
+</head>
+
+<body>
+
+    <div class="ui segment">
+        <div class="ui container">
+            <h1 class="ui header">Onlayn lug'at</h1>
+            <div class="ui divider"></div>
+            <p>Bepul tarjimon dastui</p>
+        </div>
+    </div>
+
+    <div class="ui container">
+        <div class="ui placeholder segment">
+            <div class="ui icon header">
+                Inglizcha-o'zbekcha, O'zbekcha-Inglizcha
+            </div>
+            <div class="inline" style="width: 90%;">
+                <div class="ui massive form search">
+                    <form method="get" action="/" class="ui icon input" style="width: 100%;">
+                        <input type="text" value="{{translate}}" name="translate" class="prompt" placeholder="So'z kiriting...">
+                        <i class="search link icon"></i>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui piled segment">
+            <h4 class="ui header">Natija</h4>
+            <table class="ui celled large olive table">
+                <thead>
+                    <tr>
+                        <th><i class="united states flag"></i>Inglizcha</th>
+                        <th><i class="uzbekistan flag"></i>O'zbekcha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if res %}
+                {% for data in res %}
+                    <tr>
+                        <td>{{ data.english }}</td>
+                        <td>{{ data.uzbek }}</td>
+                    </tr>
+                {% endfor %}
+                {% else %}
+                     <tr>
+                        <td colspan="2" class="center aligned content">Bunday ma'lumot bazada mavjud emas</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="Semantic/semantic.min.js"></script>
+</body>
+
+</html>
